@@ -28,6 +28,25 @@
 #ifndef COMPILER_MSVC
 #define COMPILER_MSVC 0
 #endif
+/* Context - Operating system */
+#ifdef _WIN32
+#define OS_WINDOWS 1
+#endif
+#ifdef __gnu_linux__
+#define OS_LINUX 1
+#endif
+#ifdef __APPLE__
+#define OS_APPLE 1
+#endif
+#ifndef OS_WINDOWS
+#define OS_WINDOWS 0
+#endif
+#ifndef OS_LINUX
+#define OS_LINUX 0
+#endif
+#ifndef OS_APPLE
+#define OS_APPLE 0
+#endif
 
 /* Static assert */
 #ifdef USE_STATIC_ASSERTS
@@ -103,7 +122,6 @@ STATIC_ASSERT(sizeof(f64) == 8, "sizeof(f64) == 8");
 #endif
 
 /* Consts */
-#define NULL                ((void*)NULL)     /* Null pointer */
 #define CONST_INF           (1.0f/0.0f)       /* Infinity - float */
 #define CONST_NEGINF        (-1.0f/0.0f)      /* Negative infinity - float */
 #define CONST_E             (2.7182818285)    /* Euler's number */
